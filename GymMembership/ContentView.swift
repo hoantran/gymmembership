@@ -7,10 +7,37 @@
 
 import SwiftUI
 
+struct Page: View {
+    let title: String
+    let image: String
+    
+    var body: some View {
+        ZStack {
+            Color.black
+                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
+                .background(ignoresSafeAreaEdges: .all)
+            VStack {
+                Text(title)
+                    .bold()
+                    .foregroundColor(Color.gray)
+                    .font(.title)
+                Image(image)
+                    .resizable()
+                    .scaledToFit()
+                Spacer()
+            }
+        }
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            Page(title: "Springfield", image: "springfield.y")
+            Page(title: "Haverford", image: "haverford.y")
+        }
+        .tabViewStyle(.page)
     }
 }
 
